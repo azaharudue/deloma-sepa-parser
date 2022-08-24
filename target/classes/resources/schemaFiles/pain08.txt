@@ -1,0 +1,159 @@
+        ✅AccountIdentificationSEPA
+
+        ✅ActiveOrHistoricCurrencyAndAmount_SimpleTypeSEPA
+
+        ✅ActiveOrHistoricCurrencyAndAmountSEPA
+
+        ✅ActiveOrHistoricCurrencyCodeEUR
+
+        ✅ActiveOrHistoricCurrencyCode
+
+AmendmentInformationDetailsSDD
+
+        ✅AnyBICIdentifier
+
+        ✅BICIdentifier
+
+BatchBookingIndicator
+
+BranchAndFinancialInstitutionIdentificationSEPA3
+
+BranchAndFinancialInstitutionIdentificationSEPA2
+
+CashAccountSEPA1
+
+CashAccountSEPA2
+
+CategoryPurposeSEPA
+
+ChargeBearerTypeSEPACode
+
+CountryCode
+
+CreditorReferenceInformationSEPA1
+
+CreditorReferenceTypeSEPA
+
+CreditorReferenceTypeCodeSEPA
+
+        ✅CustomerDirectDebitInitiationV02
+
+        ✅DateAndPlaceOfBirth
+
+        ✅DecimalNumber
+
+DirectDebitTransactionSDD
+
+DirectDebitTransactionInformationSDD
+
+        ✅Document
+
+DocumentType3CodeSEPA
+
+ExternalCategoryPurpose1Code
+
+ExternalLocalInstrument1Code
+
+ExternalOrganisationIdentification1Code
+
+ExternalPersonIdentification1Code
+
+ExternalPurpose1Code
+
+ExternalServiceLevel1Code
+
+FinancialInstitutionIdentificationSEPA3
+
+OthrIdentification
+
+OthrIdentificationCode
+
+FinancialInstitutionIdentificationSEPA2
+
+RestrictedFinancialIdentificationSEPA
+
+RestrictedSMNDACode
+
+        ✅GenericOrganisationIdentification1
+
+        ✅GenericPersonIdentification1
+
+RestrictedPersonIdentificationSEPA
+
+RestrictedPersonIdentifierSEPA
+
+        ✅GroupHeaderSDD
+
+        ✅IBAN2007Identifier
+
+        ✅ISODate
+
+        ✅ISODateTime
+
+LocalInstrumentSEPA
+
+MandateRelatedInformationSDD
+
+        ✅Max1025Text
+
+        ✅Max140Text
+
+        ✅Max15NumericText
+
+        ✅Max35Text
+
+        ✅Max70Text
+
+OrganisationIdentificationSEPAChoice
+
+OrganisationIdentificationSchemeName1Choice
+
+        ✅PartySEPAChoice
+
+PartySEPA2
+
+        ✅PartyIdentificationSEPA1
+
+PartyIdentificationSEPA2
+
+PartyIdentificationSEPA3
+
+PartyIdentificationSEPA4
+
+PartyIdentificationSEPA5
+
+PaymentIdentificationSEPA
+
+PaymentInstructionInformationSDD
+
+PaymentMethod2Code
+
+PaymentTypeInformationSDD
+
+PersonIdentificationSEPA1Choice
+
+PersonIdentificationSEPA2
+
+PersonIdentificationSchemeName1Choice
+
+RestrictedPersonIdentificationSchemeNameSEPA
+
+IdentificationSchemeNameSEPA
+
+PostalAddressSEPA
+
+PurposeSEPA
+
+RemittanceInformationSEPA1Choice
+
+SequenceType1Code
+
+ServiceLevelSEPA
+
+StructuredRemittanceInformationSEPA1
+
+TrueFalseIndicator
+
+RestrictedIdentificationSEPA1
+
+RestrictedIdentificationSEPA2

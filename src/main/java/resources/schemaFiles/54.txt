@@ -1,0 +1,162 @@
+✔ means exists from 53/52 already
+<xs:element name="Document" type="Document"/>
+	✔AccountIdentification4Choice 
+	✔AccountInterest2 
+		❌AccountNotification2 
+	✔AccountSchemeName1Choice 
+		❌(covered by complex type)ActiveOrHistoricCurrencyAndAmount_SimpleType
+	✔ActiveOrHistoricCurrencyAndAmount 
+		❌(covered by String regex) ActiveOrHistoricCurrencyCode
+	✔AddressType2Code
+	✔AlternateSecurityIdentification2 
+	✔AmountAndCurrencyExchange3 
+	✔AmountAndCurrencyExchangeDetails3 
+	✔AmountAndCurrencyExchangeDetails4 
+	✔AmountRangeBoundary1 
+❌AnyBICIdentifier
+❌BICIdentifier
+❌BankToCustomerDebitCreditNotificationV02 
+	✔BankTransactionCodeStructure4 
+	✔BankTransactionCodeStructure5 
+	✔BankTransactionCodeStructure6 
+❌BaseOneRate
+	✔BatchInformation2 
+	✔BranchAndFinancialInstitutionIdentification4 
+	✔BranchData2 
+	✔CashAccount16 
+	✔CashAccount20 
+	✔CashAccountType2 
+	✔CashAccountType4Code
+	✔CashBalanceAvailability2 
+	✔CashBalanceAvailabilityDate1 
+	✔ChargeBearerType1Code
+	✔ChargeType1Code
+	✔ChargeType2Choice 
+❌ChargesInformation6 
+	✔ClearingSystemIdentification2Choice 
+	✔ClearingSystemMemberIdentification2 
+	✔ContactDetails2 
+	✔CopyDuplicate1Code
+	✔CorporateAction1 
+❌CountryCode
+	✔CreditDebitCode
+	✔CreditorReferenceInformation2 
+	✔CreditorReferenceType1Choice 
+	✔CreditorReferenceType2 
+	✔CurrencyAndAmountRange2 
+	✔CurrencyExchange5 
+	✔DateAndDateTimeChoice 
+	✔DateAndPlaceOfBirth 
+	✔DatePeriodDetails 
+	✔DateTimePeriodDetails 
+❌DecimalNumber
+❌Document 
+	✔DocumentAdjustment1 
+	✔DocumentType3Code
+	✔DocumentType5Code
+	✔EntryDetails1 
+	✔EntryStatus2Code
+	✔EntryTransaction2 
+❌ExternalAccountIdentification1Code
+❌ExternalBankTransactionDomain1Code
+❌ExternalBankTransactionFamily1Code
+❌ExternalBankTransactionSubFamily1Code
+❌ExternalClearingSystemIdentification1Code
+❌ExternalFinancialInstitutionIdentification1Code
+❌ExternalOrganisationIdentification1Code
+❌ExternalPersonIdentification1Code
+❌ExternalPurpose1Code
+❌ExternalReportingSource1Code
+❌ExternalReturnReason1Code
+❌ExternalTechnicalInputChannel1Code
+	✔FinancialIdentificationSchemeName1Choice 
+	✔FinancialInstitutionIdentification7 
+	✔FinancialInstrumentQuantityChoice 
+	✔FromToAmountRange 
+	✔GenericAccountIdentification1 
+	✔GenericFinancialIdentification1 
+	✔GenericIdentification3 
+	✔GenericOrganisationIdentification1 
+	✔GenericPersonIdentification1 
+	✔GroupHeader42 
+❌IBAN2007Identifier
+❌ISINIdentifier
+❌ISODate
+❌ISODateTime
+	✔ImpliedCurrencyAmountRangeChoice 
+❌ImpliedCurrencyAndAmount
+	✔InterestType1Choice 
+	✔InterestType1Code
+❌Max105Text
+❌Max140Text
+❌Max15NumericText
+❌Max15PlusSignedNumericText
+❌Max16Text
+❌Max2048Text
+❌Max34Text
+❌Max35Text
+❌Max4Text
+❌Max500Text
+❌Max5NumericText
+❌Max70Text
+	✔MessageIdentification2 
+	✔NameAndAddress10 
+	✔NamePrefix1Code
+❌Number
+	✔NumberAndSumOfTransactions1 
+	✔NumberAndSumOfTransactions2 
+	✔OrganisationIdentification4 
+	✔OrganisationIdentificationSchemeName1Choice 
+	✔Pagination 
+	✔Party6Choice 
+	✔PartyIdentification32 
+❌PercentageRate
+	✔PersonIdentification5 
+	✔PersonIdentificationSchemeName1Choice 
+❌PhoneNumber
+	✔PostalAddress6 
+	✔ProprietaryAgent2 
+	✔ProprietaryBankTransactionCodeStructure1 
+	✔ProprietaryDate2 
+	✔ProprietaryParty2 
+	✔ProprietaryPrice2 
+	✔ProprietaryQuantity1 
+	✔ProprietaryReference1 
+	✔Purpose2Choice 
+	✔Rate3 
+	✔RateType4Choice 
+	✔ReferredDocumentInformation3 
+	✔ReferredDocumentType1Choice 
+	✔ReferredDocumentType2 
+	✔RemittanceAmount1 
+	✔RemittanceInformation5 
+	✔RemittanceLocation2 
+	✔RemittanceLocationMethod2Code
+	✔ReportEntry2 
+	✔ReportingSource1Choice 
+	✔ReturnReason5Choice 
+	✔ReturnReasonInformation10 
+	✔SecurityIdentification4Choice 
+	✔StructuredRemittanceInformation7 
+	✔TaxAmount1 
+	✔TaxAuthorisation1 
+	✔TaxCharges2 
+	✔TaxInformation3 
+	✔TaxParty1 
+	✔TaxParty2 
+	✔TaxPeriod1 
+	✔TaxRecord1 
+	✔TaxRecordDetails1 
+	✔TaxRecordPeriod1Code
+	✔TechnicalInputChannel1Choice 
+	✔TotalTransactions2 
+	✔TotalsPerBankTransactionCode2 
+	✔TransactionAgents2 
+	✔TransactionDates2 
+	✔TransactionInterest2 
+	✔TransactionParty2 
+	✔TransactionPrice2Choice 
+	✔TransactionQuantities1Choice 
+	✔TransactionReferences2 
+❌TrueFalseIndicator
+❌YesNoIndicator
