@@ -1,8 +1,12 @@
 package parser;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.text.ParseException;
 import java.util.Arrays;
 
@@ -12,13 +16,17 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+import javax.xml.stream.XMLStreamWriter;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
 import org.xml.sax.SAXException;
+
+import com.sun.xml.internal.stream.writers.WriterUtility;
 
 import parser.model.abs.DocumentAbs;
 
@@ -40,7 +48,7 @@ public class BaseXmlFactory {
 	 * @return
 	 * @throws IOException 
 	 */
-	public static <T> boolean createXmlFile(File file, T t, File xsdFile, String schemaLocation, Class<?>... classes) throws IOException {
+	public static <T> String createXmlFile(T t, String schemaLocation, Class<?>... classes) throws IOException {
 
 		try {
 
@@ -65,26 +73,35 @@ public class BaseXmlFactory {
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
 			// jaxbMarshaller.setSchema(schema);
-
+			 StringWriter sw = new StringWriter();
+			 		       
 			// Writes XML file to file-system
-			jaxbMarshaller.marshal(t, file);
-			jaxbMarshaller.marshal(t, System.out);
+			jaxbMarshaller.marshal(t, sw);
+			
+			//jaxbMarshaller.marshal(t, System.out);
+			
+			//OutputStream os  = new FileOutputStream(file);
+			//XMLOutputFactory outputFactory = XMLOutputFactory.newInstance(); 
+			
+			//XMLStreamWriter  w = outputFactory.createXMLStreamWriter(os);
+			
 
 			// Validate against given schema file
 
-			SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-			Schema schema = factory.newSchema(xsdFile);
-			jaxbMarshaller.setSchema(schema);
+			//SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+			//Schema schema = factory.newSchema(xsdFile);
+			//jaxbMarshaller.setSchema(schema);
 			//schema.newValidator().validate(new StreamSource(file));
+			return sw.toString();
 
-		} catch (JAXBException | SAXException e)
+		} catch (JAXBException  e)
 		// | SAXException | IOException e
 
 		{
 			e.printStackTrace();
 
 		}
-		return true;
+		return null;
 
 	}
 

@@ -1,7 +1,7 @@
 <root>
   <facet id="jpt.jaxb">
     <node name="classgen">
-      <attribute name="package" value="parser.model.pain"/>
+      <attribute name="package" value="parser.model.camt52"/>
     </node>
     <node name="libprov">
       <attribute name="provider-id" value="jaxb-no-op-library-provider"/>
@@ -12,6 +12,9 @@
     <node name="schemas">
       <node name="schema-1">
         <attribute name="location" value="platform:/resource/deloma-xml-parser/src/main/java/schemaFiles/pain.008.003.02.xsd"/>
+      </node>
+      <node name="schema-2">
+        <attribute name="location" value="platform:/resource/deloma-sepa-parser/src/main/java/schemaFiles/camt.052.001.02.xsd"/>
       </node>
     </node>
   </facet>

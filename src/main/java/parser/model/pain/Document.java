@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import parser.model.abs.DocumentAbs;
 
-@XmlRootElement
+@XmlRootElement(name = "Document")
 @XmlType(name = "Document", propOrder = { "cstmrDrctDbtInitn" })
 public class Document extends DocumentAbs {
 

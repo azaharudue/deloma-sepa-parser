@@ -1,4 +1,5 @@
 package testparser;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -55,19 +56,17 @@ import utils.ParserUtils;
  * @author Azahar Hossain (c) 2022
  *
  */
-public class CamtParserTest
-{
+public class CamtParserTest {
 
 	static String FILEPATH = "";
 	static String actualMsgId = "";
 	static String expectedMsgId = "";
-	
+
 	static TimeZone timeZone = TimeZone.getDefault();
 
 	static List<AccountReport11> accountreports = new ArrayList<AccountReport11>();
 
-	public static void main(String[] args)
-	{
+	public static void main(String[] args) {
 		testParser5X();
 
 	}
@@ -75,19 +74,18 @@ public class CamtParserTest
 	/**
 	 * 
 	 */
-	private static void testParser5X()
-	{
-		try
-		{
+	private static void testParser5X() {
+		try {
 
 			// CAMT052
-			// FILEPATH = "H:\\Test\\Parser\\test-camt52.xml";
+			FILEPATH = "E:\\Test\\Parser\\test-camt52.xml";
 
 			// CAMT053
 
 			// FILEPATH = "H:\\Test\\Parser\\test-camt53.xml";
 
-			// camt52(fis);
+			InputStream fis = new FileInputStream(FILEPATH);
+			camt52(fis);
 
 			// camt53(file);
 
@@ -97,14 +95,11 @@ public class CamtParserTest
 			// validate xml file against xsd:
 			String xsdpath = "H:\\Test\\Parser\\xsd\\camt.054.001.02.xsd";
 
-			createCamt54(FILEPATH, xsdpath);
-			InputStream fis = new FileInputStream(FILEPATH);
-			camt54(fis);
+			// createCamt54(FILEPATH, xsdpath);
+			// camt54(fis);
 
 			fis.close();
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -117,8 +112,7 @@ public class CamtParserTest
 	 * @throws XMLStreamException
 	 */
 	@SuppressWarnings("unused")
-	private static void camt52(InputStream is) throws Exception, JAXBException, XMLStreamException
-	{
+	private static void camt52(InputStream is) throws Exception, JAXBException, XMLStreamException {
 		CamtParser parser = new CamtParser(CAMTTYPE.CAMT52);
 
 		Document052 document052 = (Document052) parser.parse(is);
@@ -130,8 +124,7 @@ public class CamtParserTest
 
 		accountreports = document052.getBkToCstmrAcctRpt().getRpt();
 
-		for (AccountReport11 accountReport11 : accountreports)
-		{
+		for (AccountReport11 accountReport11 : accountreports) {
 			accountReport11.getNtry().forEach(o -> System.out.println(o.toString() + "\n"));
 		}
 		System.out.println(actualMsgId);
@@ -146,8 +139,7 @@ public class CamtParserTest
 	 * @throws XMLStreamException
 	 */
 	@SuppressWarnings("unused")
-	private static void camt53(InputStream is) throws Exception, JAXBException, XMLStreamException
-	{
+	private static void camt53(InputStream is) throws Exception, JAXBException, XMLStreamException {
 		CamtParser parser = new CamtParser(CAMTTYPE.CAMT53);
 
 		Document053 document053 = (Document053) parser.parse(is);
@@ -157,8 +149,7 @@ public class CamtParserTest
 		System.out.println(actualMsgId);
 	}
 
-	private static void camt54(InputStream is) throws Exception, JAXBException, XMLStreamException
-	{
+	private static void camt54(InputStream is) throws Exception, JAXBException, XMLStreamException {
 		CamtParser parser = new CamtParser(CAMTTYPE.CAMT54);
 
 		Document054 document054 = (Document054) parser.parse(is);
@@ -166,92 +157,108 @@ public class CamtParserTest
 		System.out.println(document054.toString());
 	}
 
-	private static boolean createCamt54(String filepath, String xsdFilePath) throws IOException, SAXException
-	{
+	/**
+	 * FIXME: fix for document 54
+	 * 
+	 * @param filepath
+	 * @param xsdFilePath
+	 * @return
+	 * @throws IOException
+	 * @throws SAXException
+	 */
+	private static String createCamt54(String filepath, String xsdFilePath) throws IOException, SAXException {
 		File xmlFile = new File(filepath);
-		Document054 document = populateDocument54();
+
+		// Document054 document = populateDocument54();
 		File xsdFile = new File(xsdFilePath);
 
 		String schemaLocation = "urn:iso:std:iso:20022:tech:xsd:camt.054.001.02 camt.054.001.02.xsd";
 
-		return BaseXmlFactory.createXmlFile(xmlFile, document, xsdFile, schemaLocation);
-
+		return null;
+		// BaseXmlFactory.createXmlFile( document, schemaLocation);
 	}
 
 	/**
-	 * 
 	 */
-	private static Document054 populateDocument54()
-	{
-		// 1st:Document Top most in the hierarchy
-		Document054 document = new Document054();
 
-		// 2nd: BankToCustomerDebitCreditNotificationV02
-
-		BankToCustomerDebitCreditNotificationV02 customerDebitCreditNotificationV02 = new BankToCustomerDebitCreditNotificationV02();
-
-		/* Add Group Header **/
-		GroupHeader42 groupHeader = new GroupHeader42();
-		// msgId
-		groupHeader.setMsgId("054D2013-12-31T01:59:36.0N130000007");
-
-		// creation datetime
-		groupHeader.setCreDtTm(ParserUtils.dateToXMLGregorianCalendar(new Date(2013, 12, 31), timeZone));
-
-		Pagination pagination = new Pagination();
-		pagination.setPgNb("1");
-		pagination.setLastPgInd(true);
-		groupHeader.setMsgPgntn(pagination);
-		customerDebitCreditNotificationV02.setGrpHdr(groupHeader);
-		// ---- end of Group Header --------
-
-		/* Add Notifications */
-		AccountNotification2 notification1 = new AccountNotification2();
-		notification1.setId("0352C5420131231015954"); // Id
-		notification1.setElctrncSeqNb(new BigDecimal("130000007")); // ElctrncSeqNb
-
-		// --- Account --//
-		CashAccount20 acct = new CashAccount20();
-		AccountIdentification4Choice accId = new AccountIdentification4Choice();
-		accId.setIBAN("DE58740618130100033626");
-		acct.setId(accId);
-		acct.setCcy("EUR");
-		// owner
-		PartyIdentification32 owner = new PartyIdentification32();
-		owner.setNm("Testkonto Nummer 2");
-		acct.setOwnr(owner);
-		// Bank details
-		BranchAndFinancialInstitutionIdentification4 finInstitute = new BranchAndFinancialInstitutionIdentification4();
-		FinancialInstitutionIdentification7 finInstituteId = new FinancialInstitutionIdentification7();
-		finInstituteId.setBIC("GENODEF1PFK"); // BIC
-		finInstituteId.setNm("VR-Bank Rottal-Inn eG"); // Bank name
-		GenericFinancialIdentification1 generalId = new GenericFinancialIdentification1();
-		generalId.setId("DE 129267947"); // Bank id
-		generalId.setIssr("UmsStId");
-		finInstituteId.setOthr(generalId);
-		finInstitute.setFinInstnId(finInstituteId);
-		acct.setSvcr(finInstitute);
-		notification1.setAcct(acct);
-		// --- end of account details --//
-
-		/* Entry(ies) */ // Ntry
-		ReportEntry2 entry = createEntry(accId);
-		notification1.addNtry(entry);
-
-		// Debit entry
-		customerDebitCreditNotificationV02.addNtfctn(notification1);
-
-		document.setBkToCstmrDbtCdtNtfctn(customerDebitCreditNotificationV02);
-
-		return document;
-	}
+	// private static Document054 populateDocument54()
+	// {
+	// // 1st:Document Top most in the hierarchy
+	// Document054 document = new Document054();
+	//
+	// // 2nd: BankToCustomerDebitCreditNotificationV02
+	//
+	// BankToCustomerDebitCreditNotificationV02
+	// customerDebitCreditNotificationV02 = new
+	// BankToCustomerDebitCreditNotificationV02();
+	//
+	// /* Add Group Header **/
+	// parser.model.GroupHeader42 groupHeader = new
+	// parser.model.GroupHeader42();
+	// // msgId
+	// groupHeader.setMsgId("054D2013-12-31T01:59:36.0N130000007");
+	//
+	// // creation datetime
+	// groupHeader.setCreDtTm(ParserUtils.dateToXMLGregorianCalendar(new
+	// Date(2013, 12, 31), timeZone));
+	//
+	// Pagination pagination = new Pagination();
+	// pagination.setPgNb("1");
+	// pagination.setLastPgInd(true);
+	// groupHeader.setMsgPgntn(pagination);
+	// customerDebitCreditNotificationV02.setGrpHdr(groupHeader);
+	// // ---- end of Group Header --------
+	//
+	// /* Add Notifications */
+	// AccountNotification2 notification1 = new AccountNotification2();
+	// notification1.setId("0352C5420131231015954"); // Id
+	// notification1.setElctrncSeqNb(new BigDecimal("130000007")); //
+	// ElctrncSeqNb
+	//
+	// // --- Account --//
+	// CashAccount20 acct = new CashAccount20();
+	// AccountIdentification4Choice accId = new AccountIdentification4Choice();
+	// accId.setIBAN("DE58740618130100033626");
+	// acct.setId(accId);
+	// acct.setCcy("EUR");
+	// // owner
+	// PartyIdentification32 owner = new PartyIdentification32();
+	// owner.setNm("Testkonto Nummer 2");
+	// acct.setOwnr(owner);
+	// // Bank details
+	// BranchAndFinancialInstitutionIdentification4 finInstitute = new
+	// BranchAndFinancialInstitutionIdentification4();
+	// FinancialInstitutionIdentification7 finInstituteId = new
+	// FinancialInstitutionIdentification7();
+	// finInstituteId.setBIC("GENODEF1PFK"); // BIC
+	// finInstituteId.setNm("VR-Bank Rottal-Inn eG"); // Bank name
+	// GenericFinancialIdentification1 generalId = new
+	// GenericFinancialIdentification1();
+	// generalId.setId("DE 129267947"); // Bank id
+	// generalId.setIssr("UmsStId");
+	// finInstituteId.setOthr(generalId);
+	// finInstitute.setFinInstnId(finInstituteId);
+	// acct.setSvcr(finInstitute);
+	// notification1.setAcct(acct);
+	// // --- end of account details --//
+	//
+	// /* Entry(ies) */ // Ntry
+	// ReportEntry2 entry = createEntry(accId);
+	// notification1.addNtry(entry);
+	//
+	// // Debit entry
+	// customerDebitCreditNotificationV02.addNtfctn(notification1);
+	//
+	// document.setBkToCstmrDbtCdtNtfctn(customerDebitCreditNotificationV02);
+	//
+	// return document;
+	// }
 
 	/**
 	 * @param accId
 	 * @return
 	 */
-	private static ReportEntry2 createEntry(AccountIdentification4Choice accId)
-	{
+	private static ReportEntry2 createEntry(AccountIdentification4Choice accId) {
 		ReportEntry2 entry = new ReportEntry2();
 		ActiveOrHistoricCurrencyAndAmount currenyAndAmount = new ActiveOrHistoricCurrencyAndAmount(); // Amt
 		currenyAndAmount.setCcy("EUR");
@@ -262,11 +269,11 @@ public class CamtParserTest
 		entry.setSts(EntryStatus2Code.BOOK);
 		// Booking date
 		DateAndDateTimeChoice bookingDate = new DateAndDateTimeChoice();
-		bookingDate.setDt(ParserUtils.dateToXMLGregorianCalendar(new Date(2013,12,30),timeZone));
+		bookingDate.setDt(ParserUtils.dateToXMLGregorianCalendar(new Date(2013, 12, 30), timeZone));
 		entry.setBookgDt(bookingDate);
 		// Value date
 		DateAndDateTimeChoice valueDate = new DateAndDateTimeChoice();
-		valueDate.setDt(ParserUtils.dateToXMLGregorianCalendar(new Date(2013,12,30),timeZone));
+		valueDate.setDt(ParserUtils.dateToXMLGregorianCalendar(new Date(2013, 12, 30), timeZone));
 		entry.setValDt(valueDate);
 		entry.setAcctSvcrRef("2013122812211780000");
 
@@ -287,8 +294,7 @@ public class CamtParserTest
 	 * @param accId
 	 * @return
 	 */
-	private static EntryTransaction2 createTransaction(AccountIdentification4Choice accId)
-	{
+	private static EntryTransaction2 createTransaction(AccountIdentification4Choice accId) {
 		// Tx 1:
 		EntryTransaction2 txDetails1 = new EntryTransaction2(); // TxDtls 1
 
@@ -352,8 +358,7 @@ public class CamtParserTest
 	 * @throws IOException
 	 */
 	@Test
-	public void testParse() throws IOException
-	{
+	public void testParse() throws IOException {
 		main(null);
 
 		Assert.assertTrue(expectedMsgId.equals(actualMsgId));

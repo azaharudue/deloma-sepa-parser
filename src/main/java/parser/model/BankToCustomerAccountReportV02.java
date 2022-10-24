@@ -6,6 +6,8 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
+import parser.model.camt52.GroupHeader42;
+
 /**
  * @author Azahar Hossain (c) 2022
  *
@@ -15,12 +17,12 @@ import javax.xml.bind.annotation.XmlType;
 public class BankToCustomerAccountReportV02
 {
 
-	@XmlElement(name = "GrpHdr", required = true)
-	public GroupHeader42 grpHdr;
+	protected  GroupHeader42 grpHdr;
 
 	/**
 	 * @return the grpHdr
 	 */
+	@XmlElement(name = "GrpHdr", required = true)
 	public GroupHeader42 getGrpHdr()
 	{
 		return grpHdr;

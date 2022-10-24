@@ -43,7 +43,7 @@ public class RestrictedPersonIdentificationSEPA {
 
     @XmlElement(name = "Id", required = true)
     protected String id;
-    @XmlElement(name = "SchmeNm", required = true)
+    @XmlElement(name = "SchmeNm", required = true, nillable=true)
     protected RestrictedPersonIdentificationSchemeNameSEPA schmeNm;
 
     /**

@@ -58,8 +58,7 @@ public class CamtParser
 	public Object parse(InputStream is) throws Exception
 	{
 		switch (camtType)
-		{
-			case CAMT52:
+		{			case CAMT52:
 				return BaseXmlFactory.parse(is, Document052.class, AccountReport11.class, BankToCustomerAccountReportV02.class);
 			case CAMT53:
 				return BaseXmlFactory.parse(is, Document053.class);

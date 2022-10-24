@@ -11,5 +11,5 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Azahar Hossain (c) 2022
  *
  */
-@XmlAccessorType(XmlAccessType.FIELD)
+@XmlAccessorType(XmlAccessType.NONE)
 public abstract class DocumentAbs{}
