@@ -6,7 +6,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-import parser.model.camt52.GroupHeader42;
+import parser.model.GroupHeader42;
 
 /**
  * @author Azahar Hossain (c) 2022

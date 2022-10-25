@@ -10,6 +10,8 @@ import parser.model.BankToCustomerAccountReportV02;
 import parser.model.Document052;
 import parser.model.Document053;
 import parser.model.Document054;
+import parser.model.abs.GroupHeaderAbs;
+import parser.model.camt52.GroupHeader42;
 
 /**
  * Main CamtParser class parses xml file to given Class type f.e
@@ -59,7 +61,7 @@ public class CamtParser
 	{
 		switch (camtType)
 		{			case CAMT52:
-				return BaseXmlFactory.parse(is, Document052.class, AccountReport11.class, BankToCustomerAccountReportV02.class);
+				return BaseXmlFactory.parse(is, Document052.class, AccountReport11.class, parser.model.GroupHeader42.class, GroupHeaderAbs.class, BankToCustomerAccountReportV02.class);
 			case CAMT53:
 				return BaseXmlFactory.parse(is, Document053.class);
 			case CAMT54:

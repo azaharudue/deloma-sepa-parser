@@ -78,7 +78,7 @@ public class CamtParserTest {
 		try {
 
 			// CAMT052
-			FILEPATH = "E:\\Test\\Parser\\test-camt52.xml";
+			FILEPATH = "H:\\Test\\Parser\\camt52\\2020.01.08.xml";
 
 			// CAMT053
 
@@ -90,7 +90,7 @@ public class CamtParserTest {
 			// camt53(file);
 
 			// CAMT054
-			FILEPATH = "H:\\Test\\Parser\\test-camt54.xml";
+			//FILEPATH = "H:\\Test\\Parser\\test-camt54.xml";
 
 			// validate xml file against xsd:
 			String xsdpath = "H:\\Test\\Parser\\xsd\\camt.054.001.02.xsd";
@@ -121,11 +121,16 @@ public class CamtParserTest {
 		expectedMsgId = "camt52_20200108173025__ONLINEBA";
 		// actual
 		actualMsgId = document052.getBkToCstmrAcctRpt().getGrpHdr().getMsgId();
+		
+		GroupHeader42 header = document052.getBkToCstmrAcctRpt().getGrpHdr(); 
+		Date date = document052.getBkToCstmrAcctRpt().getGrpHdr().getCreDtTm().toGregorianCalendar().getTime();
 
+		System.out.println(date);
+		
 		accountreports = document052.getBkToCstmrAcctRpt().getRpt();
 
 		for (AccountReport11 accountReport11 : accountreports) {
-			accountReport11.getNtry().forEach(o -> System.out.println(o.toString() + "\n"));
+			//accountReport11.getNtry().forEach(o -> System.out.println(o.toString() + "\n"));
 		}
 		System.out.println(actualMsgId);
 	}
